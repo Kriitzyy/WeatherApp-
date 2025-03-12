@@ -297,3 +297,13 @@ img {
     padding: 20px;
 }
 
+.footer {
+    background: #333; /* Mörk bakgrund */
+    color: white; /* Vit text */
+    text-align: center; /* Centrera texten */
+    padding: 15px 0; /* Utrymme ovanför och under texten */
+    font-size: 14px; /* Mindre textstorlek */
+    position: relative; /* Eller 'absolute' beroende på layout */
+    bottom: 0;
+    width: 100%;
+}
