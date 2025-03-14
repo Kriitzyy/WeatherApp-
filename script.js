@@ -39,8 +39,6 @@ function toggleMenu() {
         sidebar.style.left = "-250px";
     }
 }
-<<<<<<< HEAD
-=======
 // Lista över 10 extra städer med väderdata
 const extraWeatherData = [
     { city: "Sollentuna", temp: -5, icon: "🌙" },
@@ -74,4 +72,4 @@ function generateWeatherTable() {
 }
 
 generateWeatherTable();
->>>>>>> ab1c71d (La till en tabell där man ser 10st fler städer i Sverige)
+

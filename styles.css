@@ -1,8 +1,5 @@
-/* styles.css */
-<<<<<<< HEAD
-=======
 
->>>>>>> ab1c71d (La till en tabell där man ser 10st fler städer i Sverige)
+
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +8,7 @@
 }
 
 body {
-<<<<<<< HEAD
+
     /*background: url('2462633.jpg') no-repeat center center/cover;*/
     height: 100vh;
     display: flex;
@@ -20,31 +17,23 @@ body {
     text-align: center;
     flex-direction: column;
     position: relative;
-=======
     height: auto; /* Se till att body inte begränsar innehållet */
     display: block; /* Ta bort flex så att hero fungerar normalt */
     background-color: #f6f8fc !important;
->>>>>>> ab1c71d (La till en tabell där man ser 10st fler städer i Sverige)
 }
 
 .hero {
     position: relative;
     width: 100%;
-<<<<<<< HEAD
     height: 90vh;
-=======
     height: 60vh;
->>>>>>> ab1c71d (La till en tabell där man ser 10st fler städer i Sverige)
     background: url('2462633.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     text-align: center;
-<<<<<<< HEAD
-=======
     overflow: hidden; /* Se till att inget trycker ut den */
->>>>>>> ab1c71d (La till en tabell där man ser 10st fler städer i Sverige)
 }
 
 .hero::after {
@@ -53,17 +42,10 @@ body {
     bottom: 0;
     width: 100%;
     height: 100px;
-<<<<<<< HEAD
     background: white;
     clip-path: ellipse(100% 60% at center bottom);
 }
 
-=======
-    clip-path: ellipse(100% 60% at center bottom);
-}
-
-
->>>>>>> ab1c71d (La till en tabell där man ser 10st fler städer i Sverige)
 /* Bakgrundsbild */
 /*.background-container {
     position: relative;
@@ -241,8 +223,7 @@ img {
     color: #ffcc00; /* Lägg till en hover-effekt för bättre design */
 }
 
-<<<<<<< HEAD
-=======
+
 .main-title {
     text-align: center;
     font-size: 22px;
@@ -262,7 +243,6 @@ img {
     margin-top: 30px;
     letter-spacing: 1px; /* Ger lite mer utrymme mellan bokstäver */
 }
->>>>>>> ab1c71d (La till en tabell där man ser 10st fler städer i Sverige)
 /* ====== Vädersektionen (container som håller alla väderlådor) ====== */
 .weather-container {
     display: flex; /* Lådor ligger i en kolumn-layout */
@@ -271,10 +251,7 @@ img {
     align-items: center; /* Centrerar lådorna horisontellt */
     gap: 20px; /* Skapar mellanrum mellan väderlådorna (MINSKA mellanrummet mellan lådorna)*/
     margin-top: 10px; /* Ger lite extra utrymme ovanför vädersektionen */
-<<<<<<< HEAD
-=======
     margin-bottom: 200px;
->>>>>>> ab1c71d (La till en tabell där man ser 10st fler städer i Sverige)
     flex-wrap: wrap; /* Gör att lådorna anpassas om skärmen är smal */
 }
 
@@ -348,8 +325,6 @@ img {
     padding: 20px;
 }
 
-<<<<<<< HEAD
-=======
 .weather-table {
     width: 90%;
     max-width: 1200px;
@@ -400,7 +375,6 @@ img {
 }
 
 
->>>>>>> ab1c71d (La till en tabell där man ser 10st fler städer i Sverige)
 .footer {
     background: #333; /* Mörk bakgrund */
     color: white; /* Vit text */
