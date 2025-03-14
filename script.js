@@ -39,3 +39,39 @@ function toggleMenu() {
         sidebar.style.left = "-250px";
     }
 }
+<<<<<<< HEAD
+=======
+// Lista över 10 extra städer med väderdata
+const extraWeatherData = [
+    { city: "Sollentuna", temp: -5, icon: "🌙" },
+    { city: "Södermalm", temp: -5, icon: "🌙" },
+    { city: "Västerås", temp: -6, icon: "🌙" },
+    { city: "Örebro", temp: -6, icon: "🌙" },
+    { city: "Linköping", temp: -4, icon: "☁️" },
+    { city: "Helsingborg", temp: 1, icon: "☁️" },
+    { city: "Lund", temp: 0, icon: "⛅" },
+    { city: "Jönköping", temp: -3, icon: "☁️" },
+    { city: "Gävle", temp: -7, icon: "🌙" },
+    { city: "Umeå", temp: -8, icon: "❄️" }
+];
+
+
+// Funktion för att generera tabellrader
+function generateWeatherTable() {
+    const tableBody = document.getElementById("weather-table-body");
+
+    extraWeatherData.forEach(weather => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${weather.city}</td>
+            <td>${weather.temp}°</td>
+            <td>${weather.icon}</td> 
+        `;
+
+        tableBody.appendChild(row);
+    });
+}
+
+generateWeatherTable();
+>>>>>>> ab1c71d (La till en tabell där man ser 10st fler städer i Sverige)
