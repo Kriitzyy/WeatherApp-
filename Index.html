@@ -1,162 +1,202 @@
 <!DOCTYPE html>
-<html lang="sv">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyCast</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sweden Weather App</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
-<!--
 <body>
-    <div class="background-container">
-        <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#ffffff" fill-opacity="1"
-                d="M0,288L80,266.7C160,245,320,203,480,192C640,181,800,203,960,213.3C1120,224,1280,224,1360,224L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
-            </path>
-        </svg>
-    </div>  -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button id="theme-toggle">Theme Toggle 🌙</button></li>
+                <li><button id="unit-toggle">Switch to °F</button></li>
+            </ul>
+        </nav>
+        <section id="hero">
+            <img src="images/skycast.png" alt="Sweden Weather Logo" id="logo">
+        <h1>Welcome to Sweden Weather App</h1>
+        <p>Get real-time weather updates and forecasts for any city in Sweden.</p>
+
+            <section class="search">
+                <input type="text" id="city-input" placeholder="Search city...">
+                <button id="search-btn">🔍 Search</button>
+            </section>
+            
+            
+        </section>
+    </header>
+    
+
+    <main>
+        
+    
+        <section id="weather-container" class="hidden">
+            <h2 id="city-name">Search by city</h2>
+            <p id="temperature"></p>
+            <p id="description"></p>
+            <p id="humidity"></p>
+            <p id="wind-speed"></p>
+            <p id="pressure"></p>
+            <img id="weather-icon" src="" alt="Weather icon" class="hidden">
+
+            <div id="forecast-container"></div>
+        </section>
+        
+        <section id="top-cities">
+            <h2>🌍 Weather in Major Cities</h2>
+            <div class="cities-grid">
+                <div class="city-card" id="stockholm">
+                    <h3>Stockholm</h3>
+                    <p class="temp"></p>
+                    <p class="desc"></p>
+                </div>
+                <div class="city-card" id="gothenburg">
+                    <h3>Gothenburg</h3>
+                    <p class="temp"></p>
+                    <p class="desc"></p>
+                </div>
+                <div class="city-card" id="malmo">
+                    <h3>Malmö</h3>
+                    <p class="temp"></p>
+                    <p class="desc"></p>
+                </div>
+                <div class="city-card" id="uppsala">
+                    <h3>Uppsala</h3>
+                    <p class="temp"></p>
+                    <p class="desc"></p>
+                </div>
+                <div class="city-card" id="airQ">
+                    
+                        <h2>💨 Air Quality Index</h2>
+                        <div class="aqi-card">
+                            <p>🌿 AQI Level: <span id="aqi-value">Loading...</span></p>
+                            <p id="aqi-desc"></p>
+                        </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!--
+            <section id="forecast" class="hidden">
+                <h2>5-Day Forecast</h2>
+                <div id="forecast-container"></div>
+            </section>
+        -->
+    
+        <!-- <section id="weather-map">
+            <h2>Map</h2>
+            <iframe id="map" src="" frameborder="0"></iframe>
+        </section> -->
+        <section id="live-radar">
+            <h2>📡 Live Weather Radar</h2>
+            <iframe id="radar" src="https://embed.windy.com/embed2.html?lat=59.3293&lon=18.0686&zoom=5&level=surface&overlay=rain&menu=&message=&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=&detailLon=&metricWind=m/s&metricTemp=%C2%B0C&radarRange=-1" frameborder="0"></iframe>
+        </section>
+        
+        
+        
+        
+
+        <section id="news">
+            <h2>📰 Latest Weather News</h2>
+            <div class="news-grid">
+                <div class="news-item">
+                    <h3>Spring Arrives Early in Sweden</h3>
+                    <iframe src="https://www.youtube.com/embed/iJcPxSf3vzc" frameborder="0" allowfullscreen></iframe>
+                    <p>Sweden experiences early spring weather in March, with visits to places like Vadstena castle showcasing the beauty of the season.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Rapid Weather Changes in Sweden</h3>
+                    <iframe src="https://www.youtube.com/embed/sKWdkKJrPK8" frameborder="0" allowfullscreen></iframe>
+                    <p>Highlighting how quickly seasons can change in Sweden, with autumn turning to winter overnight.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Severe Weather Alert in Sweden</h3>
+                    <iframe src="https://www.youtube.com/embed/tG208kF93Qc" frameborder="0" allowfullscreen></iframe>
+                    <p>Recent severe weather conditions affecting Sweden, including heavy snowfall and strong winds.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Snowstorm Unfolds in Sweden</h3>
+                    <iframe src="https://www.youtube.com/embed/nXZkTOcaYZs" frameborder="0" allowfullscreen></iframe>
+                    <p>Coverage of a significant snowstorm impacting Sweden and surrounding regions.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Sweden Records Extreme Cold Temperatures</h3>
+                    <iframe src="https://www.youtube.com/embed/EHGBN_3ZEOY" frameborder="0" allowfullscreen></iframe>
+                    <p>Sweden experiences temperatures dropping to -40°C, leading to widespread power outages and disruptions.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Understanding Swedish Weather Patterns</h3>
+                    <iframe src="https://www.youtube.com/embed/sLMUXpoSkl0" frameborder="0" allowfullscreen></iframe>
+                    <p>A comprehensive guide to Swedish weather, discussing the rapid changes and what to expect.</p>
+                </div>
+            </div>
+        </section>
+        
+        
+
+        <section id="contact">
+            <h2>📬 Get in Touch</h2>
+            <p>If you have any questions, suggestions, or feedback, feel free to contact us!</p>
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+        
+        
+    
+        <p id="error-message" class="hidden">City not found! ❌</p>
+    </main>
+    
 
 
-<div class="menu-icon" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
-    <span class="menu-text">Meny</span> <!-- Lägg till text för tydlighet -->
-</div>
-<nav class="sidebar">
-    <ul>
-        <li><a href="Index.html">Hem</a></li>
-        <li><a href="#">Väder</a></li>
-        <li><a href="#">Om oss</a></li>
-        <li><a href="#">Kontakt</a></li>
-    </ul>
-</nav>
-
-<!--<div class="header">SkyCast</div>-->
-<section class="hero">
-    <img src="skycast.jpg">
-    <input type="text" class="search-box" id="searchInput" placeholder="Väderprognos för...">
-    <button onclick="searchWeather()">Sök</button>
-    <div class="city-buttons">
-        <button onclick="getWeather('Stockholm')">STOCKHOLM</button>
-        <button onclick="getWeather('Göteborg')">GÖTEBORG</button>
-        <button onclick="getWeather('Malmö')">MALMÖ</button>
-        <button onclick="getWeather('Uppsala')">UPPSALA</button>
-    </div>
-</section>
-
-<!-- Skapad separationssektion -->
-<div class="wave-divider">
-    <svg viewBox="0 0 1440 320">
-        <path fill="white" d="M0,224 C200,300 600,320 720,290 C900,250 1240,300 1440,224 L1440,320 L0,320Z"></path>
-    </svg>
-</div>
-
-
-<!--
-<section class="next-section">
-    <h2>Väderinformation</h2>
-    <p>Här visas mer information om vädret...</p>
-</section> -->
-
-<!--<section class="hero">
-        <div class="logo">Väder24</div>
-        <div class="search-box">
-            <input type="text" placeholder="Väderprognos för...">
-        </div>
-        <div class="buttons">
-            <button class="button">STOCKHOLM</button>
-            <button class="button">GÖTEBORG</button>
-            <button class="button">MALMÖ</button>
-            <button class="button">UPPSALA</button>
-        </div>
-    </section> -->
-
-
-
-<!--
-<div class="weather-result" id="weatherResult"></div>-->
-<h2 class="main-title">Väderprognos för dem fyra största städerna i</h2>
-<section class="weather-container">
-    <div class="weather-box">
-        <div class="weather-header">
-            <span>Stockholm 14:00</span>
-            <a href="#" class="forecast-link">Prognos ></a>
-        </div>
-        <div class="weather-info">
-            <img src="cloudy.png" alt="Väderikon">
-            <div class="temperature">
-                <span class="temp">5°</span>
-                <p>Känns som 2° ↓ 4 m/s</p>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>About Sweden Weather</h3>
+                <p>Get real-time weather updates, forecasts, and climate news for cities across Sweden.</p>
+            </div>
+    
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-api">
+                <h3>Weather Source</h3>
+                <p>API by <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a></p>
+            </div>
+    
+            <div class="footer-social">
+                <h3>Check our latest project</h3>
+                <div class="social-icons">
+                    <a href="github link"><img src="images/github.svg" alt="GitHub"></a>
+                </div>
             </div>
         </div>
-    </div>
+    
+        <p class="footer-copy">&copy; <span id="year"></span> Sweden Weather. All rights reserved.</p>
+    </footer>
+    
 
-    <div class="weather-box">
-        <div class="weather-header">
-            <span>Göteborg 14:00</span>
-            <a href="#" class="forecast-link">Prognos ></a>
-        </div>
-        <div class="weather-info">
-            <img src="partly-cloudy.png" alt="Väderikon">
-            <div class="temperature">
-                <span class="temp">13°</span>
-                <p>Känns som 13° ↓ 3 m/s</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="weather-box">
-        <div class="weather-header">
-            <span>Malmö 14:00</span>
-            <a href="#" class="forecast-link">Prognos ></a>
-        </div>
-        <div class="weather-info">
-            <img src="sunny.png" alt="Väderikon">
-            <div class="temperature">
-                <span class="temp">18°</span>
-                <p>Känns som 17° ↓ 2 m/s</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="weather-box">
-        <div class="weather-header">
-            <span>Uppsala 14:00</span>
-            <a href="#" class="forecast-link">Prognos ></a>
-        </div>
-        <div class="weather-info">
-            <img src="rainy.png" alt="Väderikon">
-            <div class="temperature">
-                <span class="temp">8°</span>
-                <p>Känns som 6° ↓ 5 m/s</p>
-            </div>
-        </div>
-    </div>
-</section>
-<h2 class="sub-title">Övriga väderprognoser i Sverige</h2>
-<table class="weather-table">
-    <thead>
-        <tr>
-            <th>Stad</th>
-            <th>Temperatur</th>
-            <th>Väder</th>
-        </tr>
-    </thead>
-    <tbody id="weather-table-body">
-        <!-- Här kommer väderdatan att fyllas in med JavaScript -->
-    </tbody>
-</table>
-
-
-<footer class="footer">
-    <p>© 2025 SkyCast | Alla rättigheter förbehållna</p>
-</footer>
-
-
-<script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
-
 </html>
