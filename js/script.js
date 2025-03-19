@@ -72,3 +72,65 @@ async function getForecast(city) {
     }
 }
 
+
+function updateMap(city) {
+    const mapURL = `https://www.openstreetmap.org/search?query=${city}#map=11/57.7076/11.9670`;
+    document.getElementById('map').src = mapURL;
+}
+
+function showError(message) {
+    document.getElementById('error-message').textContent = message;
+    document.getElementById('error-message').classList.remove('hidden');
+    document.getElementById('weather-container').classList.add('hidden');
+}
+
+// Search button event
+document.getElementById('search-btn').addEventListener('click', () => {
+    const city = document.getElementById('city-input').value.trim();
+    if (city) getWeather(city);
+});
+
+// Theme toggle
+document.getElementById('theme-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
+
+// DOM loaded - fetch weather for top cities
+document.addEventListener("DOMContentLoaded", () => {
+    getCityWeather("Stockholm", "stockholm");
+    getCityWeather("Gothenburg", "gothenburg");
+    getCityWeather("Malmo", "malmo");
+    getCityWeather("Uppsala", "uppsala");
+});
+
+// Footer year update
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Contact form submission
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you! Your message has been sent.');
+    this.reset();
+});
+
+// Fahrenheit/Celsius switch
+let isCelsius = true;
+
+document.getElementById('unit-toggle').addEventListener('click', () => {
+    isCelsius = !isCelsius;
+    document.getElementById('unit-toggle').textContent = isCelsius ? 'Switch to °F' : 'Switch to °C';
+
+    // Refresh main city weather
+    const cityText = document.getElementById('city-name').textContent;
+    const cityName = cityText.replace('📍', '').split(',')[0].trim();
+
+    if (cityName && cityName !== 'Search by city') {
+        getWeather(cityName);
+    }
+
+    // Refresh Top Cities
+    getCityWeather("Stockholm", "stockholm");
+    getCityWeather("Gothenburg", "gothenburg");
+    getCityWeather("Malmo", "malmo");
+    getCityWeather("Uppsala", "uppsala");
+});
