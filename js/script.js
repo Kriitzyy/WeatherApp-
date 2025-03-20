@@ -134,3 +134,46 @@ document.getElementById('unit-toggle').addEventListener('click', () => {
     getCityWeather("Malmo", "malmo");
     getCityWeather("Uppsala", "uppsala");
 });
+
+const cities = ["Stockholm", "Gothenburg", "Malmo", "Uppsala"];
+
+async function getCityWeather(city, elementId) {
+    const unit = isCelsius ? 'metric' : 'imperial';
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.cod === 200) {
+            const tempUnit = isCelsius ? '°C' : '°F';
+            document.querySelector(`#${elementId} .temp`).textContent = `🌡️ ${data.main.temp}${tempUnit}`;
+            document.querySelector(`#${elementId} .desc`).textContent = `☁️ ${data.weather[0].description}`;
+
+            // 🟢 Call AQI if it's the first/top city
+            if (elementId === "stockholm") {
+                getAirQuality(data.coord.lat, data.coord.lon);
+            }
+        } else {
+            document.querySelector(`#${elementId} .temp`).textContent = "Data not available";
+        }
+    } catch (error) {
+        console.error(`Error fetching weather for ${city}:`, error);
+    }
+}
+
+async function getAirQuality(lat, lon) {
+    const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const aqi = data.list[0].main.aqi;
+        const desc = ["Good 😊", "Fair 🙂", "Moderate 😐", "Poor 😷", "Very Poor ☠️"];
+
+        document.getElementById('aqi-value').textContent = aqi;
+        document.getElementById('aqi-desc').textContent = desc[aqi - 1];
+    } catch (error) {
+        console.error("Error fetching air quality:", error);
+    }
+}
