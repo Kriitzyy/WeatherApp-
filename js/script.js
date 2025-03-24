@@ -1,5 +1,12 @@
 const apiKey = '3e4ed98a0b25973bf2c0639d207e74b1';
 
+let isCelsius = true;
+
+/**
+ * Hämtar väderdata för en given stad och uppdaterar GUI:t.
+ * @async
+ * @param {string} city - Namnet på staden att hämta väder för.
+ */
 async function getWeather(city) {
     const unit = isCelsius ? 'metric' : 'imperial';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
@@ -25,16 +32,20 @@ async function getWeather(city) {
         document.getElementById('weather-container').classList.remove('hidden');
         document.getElementById('error-message').classList.add('hidden');
 
-        getForecast(city); // Keep same, we can adapt if needed
+        getForecast(city);
         updateMap(city);
         getHourlyForecast(data.coord.lat, data.coord.lon);
         getAirQuality(data.coord.lat, data.coord.lon);
-
     } catch (error) {
         showError("Something went wrong!");
     }
 }
 
+/**
+ * Hämtar och visar 5-dagars väderprognos för en stad.
+ * @async
+ * @param {string} city - Namnet på staden att hämta prognos för.
+ */
 async function getForecast(city) {
     const unit = isCelsius ? 'metric' : 'imperial';
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
@@ -44,7 +55,7 @@ async function getForecast(city) {
         const data = await response.json();
 
         let forecastHTML = "";
-        let daysShown = {}; // Track days to avoid duplicates
+        let daysShown = {};
         const tempUnit = isCelsius ? '°C' : '°F';
 
         for (let i = 0; i < data.list.length; i += 8) {
@@ -72,71 +83,31 @@ async function getForecast(city) {
     }
 }
 
-
+/**
+ * Uppdaterar kartvyn baserat på staden.
+ * @param {string} city - Stadens namn.
+ */
 function updateMap(city) {
     const mapURL = `https://www.openstreetmap.org/search?query=${city}#map=11/57.7076/11.9670`;
     document.getElementById('map').src = mapURL;
 }
 
+/**
+ * Visar ett felmeddelande i GUI:t.
+ * @param {string} message - Felmeddelande som ska visas.
+ */
 function showError(message) {
     document.getElementById('error-message').textContent = message;
     document.getElementById('error-message').classList.remove('hidden');
     document.getElementById('weather-container').classList.add('hidden');
 }
 
-// Search button event
-document.getElementById('search-btn').addEventListener('click', () => {
-    const city = document.getElementById('city-input').value.trim();
-    if (city) getWeather(city);
-});
-
-// Theme toggle
-document.getElementById('theme-toggle').addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-});
-
-// DOM loaded - fetch weather for top cities
-document.addEventListener("DOMContentLoaded", () => {
-    getCityWeather("Stockholm", "stockholm");
-    getCityWeather("Gothenburg", "gothenburg");
-    getCityWeather("Malmo", "malmo");
-    getCityWeather("Uppsala", "uppsala");
-});
-
-// Footer year update
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Contact form submission
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Thank you! Your message has been sent.');
-    this.reset();
-});
-
-// Fahrenheit/Celsius switch
-let isCelsius = true;
-
-document.getElementById('unit-toggle').addEventListener('click', () => {
-    isCelsius = !isCelsius;
-    document.getElementById('unit-toggle').textContent = isCelsius ? 'Switch to °F' : 'Switch to °C';
-
-    // Refresh main city weather
-    const cityText = document.getElementById('city-name').textContent;
-    const cityName = cityText.replace('📍', '').split(',')[0].trim();
-
-    if (cityName && cityName !== 'Search by city') {
-        getWeather(cityName);
-    }
-
-    // Refresh Top Cities
-    getCityWeather("Stockholm", "stockholm");
-    getCityWeather("Gothenburg", "gothenburg");
-    getCityWeather("Malmo", "malmo");
-    getCityWeather("Uppsala", "uppsala");
-});
-
-const cities = ["Stockholm", "Gothenburg", "Malmo", "Uppsala"];
-
+/**
+ * Hämtar väderdata för en specifik stad och uppdaterar en angiven HTML-sektion.
+ * @async
+ * @param {string} city - Namnet på staden.
+ * @param {string} elementId - ID på HTML-elementet där väder ska visas.
+ */
 async function getCityWeather(city, elementId) {
     const unit = isCelsius ? 'metric' : 'imperial';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
@@ -150,7 +121,6 @@ async function getCityWeather(city, elementId) {
             document.querySelector(`#${elementId} .temp`).textContent = `🌡️ ${data.main.temp}${tempUnit}`;
             document.querySelector(`#${elementId} .desc`).textContent = `☁️ ${data.weather[0].description}`;
 
-            // 🟢 Call AQI if it's the first/top city
             if (elementId === "stockholm") {
                 getAirQuality(data.coord.lat, data.coord.lon);
             }
@@ -162,6 +132,12 @@ async function getCityWeather(city, elementId) {
     }
 }
 
+/**
+ * Hämtar luftkvalitetsdata (AQI) och uppdaterar GUI:t.
+ * @async
+ * @param {number} lat - Latitud.
+ * @param {number} lon - Longitud.
+ */
 async function getAirQuality(lat, lon) {
     const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
@@ -177,3 +153,63 @@ async function getAirQuality(lat, lon) {
         console.error("Error fetching air quality:", error);
     }
 }
+
+/**
+ * Hämtar väder för alla större städer när sidan laddas.
+ */
+document.addEventListener("DOMContentLoaded", () => {
+    getCityWeather("Stockholm", "stockholm");
+    getCityWeather("Gothenburg", "gothenburg");
+    getCityWeather("Malmo", "malmo");
+    getCityWeather("Uppsala", "uppsala");
+});
+
+/**
+ * Hanterar klick på sök-knappen och hämtar väderdata.
+ */
+document.getElementById('search-btn').addEventListener('click', () => {
+    const city = document.getElementById('city-input').value.trim();
+    if (city) getWeather(city);
+});
+
+/**
+ * Växlar mellan ljust och mörkt tema.
+ */
+document.getElementById('theme-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
+
+/**
+ * Visar aktuellt år i sidfoten.
+ */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/**
+ * Hanterar inskickning av kontaktformuläret.
+ * @param {Event} e - Submit-event.
+ */
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you! Your message has been sent.');
+    this.reset();
+});
+
+/**
+ * Växlar mellan Celsius och Fahrenheit och uppdaterar alla väderdata.
+ */
+document.getElementById('unit-toggle').addEventListener('click', () => {
+    isCelsius = !isCelsius;
+    document.getElementById('unit-toggle').textContent = isCelsius ? 'Switch to °F' : 'Switch to °C';
+
+    const cityText = document.getElementById('city-name').textContent;
+    const cityName = cityText.replace('📍', '').split(',')[0].trim();
+
+    if (cityName && cityName !== 'Search by city') {
+        getWeather(cityName);
+    }
+
+    getCityWeather("Stockholm", "stockholm");
+    getCityWeather("Gothenburg", "gothenburg");
+    getCityWeather("Malmo", "malmo");
+    getCityWeather("Uppsala", "uppsala");
+});
