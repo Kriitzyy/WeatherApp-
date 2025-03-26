@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+    <!-- Navigation och header -->
     <header>
         <nav>
             <ul>
@@ -17,24 +19,24 @@
                 <li><button id="unit-toggle">Switch to °F</button></li>
             </ul>
         </nav>
+
+        <!-- Hero-avsnitt med logga och beskrivning -->
         <section id="hero">
             <img src="images/skycast.png" alt="Sweden Weather Logo" id="logo">
-        <h1>Welcome to Sweden Weather App</h1>
-        <p>Get real-time weather updates and forecasts for any city in Sweden.</p>
+            <h1>Welcome to Sweden Weather App</h1>
+            <p>Get real-time weather updates and forecasts for any city in Sweden.</p>
 
+            <!-- Sökfunktion -->
             <section class="search">
                 <input type="text" id="city-input" placeholder="Search city...">
                 <button id="search-btn">🔍 Search</button>
             </section>
-            
-            
         </section>
     </header>
-    
 
     <main>
-        
-    
+
+        <!-- Visar väder för vald stad -->
         <section id="weather-container" class="hidden">
             <h2 id="city-name">Search by city</h2>
             <p id="temperature"></p>
@@ -43,10 +45,10 @@
             <p id="wind-speed"></p>
             <p id="pressure"></p>
             <img id="weather-icon" src="" alt="Weather icon" class="hidden">
-
             <div id="forecast-container"></div>
         </section>
-        
+
+        <!-- Väder i stora städer + luftkvalitet -->
         <section id="top-cities">
             <h2>🌍 Weather in Major Cities</h2>
             <div class="cities-grid">
@@ -71,37 +73,22 @@
                     <p class="desc"></p>
                 </div>
                 <div class="city-card" id="airQ">
-                    
-                        <h2>💨 Air Quality Index</h2>
-                        <div class="aqi-card">
-                            <p>🌿 AQI Level: <span id="aqi-value">Loading...</span></p>
-                            <p id="aqi-desc"></p>
-                        </div>
-                    
+                    <h2>💨 Air Quality Index</h2>
+                    <div class="aqi-card">
+                        <p>🌿 AQI Level: <span id="aqi-value">Loading...</span></p>
+                        <p id="aqi-desc"></p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!--
-            <section id="forecast" class="hidden">
-                <h2>5-Day Forecast</h2>
-                <div id="forecast-container"></div>
-            </section>
-        -->
-    
-        <!-- <section id="weather-map">
-            <h2>Map</h2>
-            <iframe id="map" src="" frameborder="0"></iframe>
-        </section> -->
+        <!-- Radarbild via iframe -->
         <section id="live-radar">
             <h2>📡 Live Weather Radar</h2>
             <iframe id="radar" src="https://embed.windy.com/embed2.html?lat=59.3293&lon=18.0686&zoom=5&level=surface&overlay=rain&menu=&message=&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=&detailLon=&metricWind=m/s&metricTemp=%C2%B0C&radarRange=-1" frameborder="0"></iframe>
         </section>
-        
-        
-        
-        
 
+        <!-- YouTube-vädernyheter -->
         <section id="news">
             <h2>📰 Latest Weather News</h2>
             <div class="news-grid">
@@ -137,9 +124,8 @@
                 </div>
             </div>
         </section>
-        
-        
 
+        <!-- Kontaktformulär -->
         <section id="contact">
             <h2>📬 Get in Touch</h2>
             <p>If you have any questions, suggestions, or feedback, feel free to contact us!</p>
@@ -156,21 +142,19 @@
                 <button type="submit" class="btn">Send Message</button>
             </form>
         </section>
-        
-        
-    
+
+        <!-- Felmeddelande vid ogiltig stad -->
         <p id="error-message" class="hidden">City not found! ❌</p>
     </main>
-    
 
-
+    <!-- Sidfot -->
     <footer>
         <div class="footer-container">
             <div class="footer-about">
                 <h3>About Sweden Weather</h3>
                 <p>Get real-time weather updates, forecasts, and climate news for cities across Sweden.</p>
             </div>
-    
+
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
@@ -179,24 +163,26 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-    
+
             <div class="footer-api">
                 <h3>Weather Source</h3>
                 <p>API by <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a></p>
             </div>
-    
+
             <div class="footer-social">
                 <h3>Check our latest project</h3>
                 <div class="social-icons">
-                    <a href="github link"><img src="images/github.svg" alt="GitHub"></a>
+                    <a href="https://github.com/Kriitzyy/WeatherApp-">
+                        <img src="images/github.svg" alt="GitHub">
+                    </a>
                 </div>
             </div>
         </div>
-    
-        <p class="footer-copy">&copy; <span id="year"></span> Sweden Weather. All rights reserved.</p>
-    </footer>
-    
 
+        <p class="footer-copy">&copy; <span id="year"></span> Skycast. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
     <script src="js/script.js"></script>
 </body>
 </html>

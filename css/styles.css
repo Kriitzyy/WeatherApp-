@@ -3,423 +3,59 @@
     --text-color: #333;
     --card-bg: white;
     --button-bg: #2f2d42;
-}
-
-.dark-mode {
+  }
+  
+  .dark-mode {
     --bg-color: #222;
     --text-color: #f0f0f0;
     --card-bg: #333;
     --button-bg: #28a745;
-}
-
-body {
+  }
+  
+  body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
     padding: 0;
-}
-
-header {
+  }
+  
+  header {
     background-color: var(--button-bg);
     color: white;
     padding: 20px;
-}
-
-#logo {
+  }
+  
+  #logo {
     width: 120px;
     height: auto;
-}
-
-.search {
+  }
+  
+  .search {
     margin: 20px;
-}
-
-input {
+  }
+  
+  input {
     padding: 10px;
     width: 250px;
-}
-
-button {
+  }
+  
+  button {
     background-color: var(--button-bg);
     color: white;
     padding: 10px;
     border: none;
     cursor: pointer;
-}
-
-#weather-container, #forecast {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    background: var(--card-bg);
-    display: inline-block;
-}
-
-#weather-map iframe {
-    width: 65%;
-    height: 300px;
-}
-
-.hidden {
-    display: none;
-}
-
-#forecast-container {
-    display: flex; /* Makes forecast horizontal */
-    justify-content: center;
-    gap: 15px; /* Space between items */
-    overflow-x: auto; /* Enable horizontal scrolling if needed */
-    padding: 10px;
-}
-
-.forecast-item {
-    background: var(--card-bg);
-    padding: 15px;
-    border-radius: 10px;
-    min-width: 120px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.forecast-item p {
-    margin: 5px 0;
-}
-
-/* Navigation Bar */
-nav {
-    background: var(--button-bg);
-    padding: 15px 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
+  }
+  
+  #search-btn {
     color: white;
+    font-size: 16px;
     font-weight: bold;
-    font-size: 18px;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* Hero Section */
-#hero {
-    border: #f0f0f0 solid 1px;
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
-}
-
-#hero h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-#hero p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-#search-btn {
-    color: #17293d;
-}
-
-
-
-
-/* News Section */
-#news {
-    text-align: center;
-    padding: 50px 20px;
-    background: var(--bg-color);
-}
-
-#news h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    grid-gap: 20px; /* Space between items */
-    max-width: 1100px;
-    margin: auto;
-}
-
-.news-item {
-    background: var(--card-bg);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.news-item h3 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.news-item iframe {
-    width: 100%;
-    height: 200px;
-    border-radius: 5px;
-}
-
-.news-item p {
-    margin-top: 10px;
-    font-size: 0.9em;
-    color: var(--text-color);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
-    }
-}
-
-@media (max-width: 500px) {
-    .news-grid {
-        grid-template-columns: 1fr; /* 1 column on mobile */
-    }
-}
-
-
-
-/* Top Cities Section */
-#top-cities {
-    text-align: center;
-    padding: 40px 20px;
-    background: var(--bg-color);
-}
-
-#top-cities h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.cities-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    max-width: 1100px;
-    margin: auto;
-}
-
-.city-card {
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.city-card h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.city-card .temp {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.city-card .desc {
-    font-size: 0.9em;
-    color: var(--text-color);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .cities-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 500px) {
-    .cities-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* Footer Styling */
-footer {
-    background: var(--button-bg);
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.footer-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    max-width: 1100px;
-    margin: auto;
-    text-align: left;
-}
-
-.footer-container h3 {
-    font-size: 1.3em;
-    margin-bottom: 10px;
-}
-
-.footer-container p,
-.footer-container ul {
-    font-size: 0.9em;
-    color: #ddd;
-}
-
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links ul li {
-    margin: 5px 0;
-}
-
-.footer-links ul li a {
-    text-decoration: none;
-    color: #ddd;
-    transition: 0.3s;
-}
-
-.footer-links ul li a:hover {
-    color: #fff;
-}
-
-/* Social Icons */
-.social-icons {
-    display: flex;
-    gap: 10px;
-}
-
-.social-icons a img {
-    width: 30px;
-    transition: 0.3s;
-}
-
-.social-icons a img:hover {
-    transform: scale(1.1);
-}
-
-/* Copyright */
-.footer-copy {
-    margin-top: 20px;
-    font-size: 0.9em;
-    color: #ddd;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .footer-container {
-        grid-template-columns: repeat(2, 1fr);
-        text-align: center;
-    }
-}
-
-@media (max-width: 500px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-#radar {
-    width: 60%;
-    height: 450px;
-    align-content: center;
-}
-
-
-/* Contact Section */
-#contact {
-    background: var(--bg-color);
-    text-align: center;
-    padding: 50px 20px;
-}
-
-#contact h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-#contact p {
-    margin-bottom: 30px;
-    color: var(--text-color);
-    font-size: 1em;
-}
-
-#contact-form {
-    max-width: 600px;
-    margin: auto;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-#contact-form input,
-#contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1em;
-    transition: 0.3s;
-    background-color: var(--card-bg);
-    color: var(--text-color);
-}
-
-#contact-form input:focus,
-#contact-form textarea:focus {
-    border-color: var(--button-bg);
-    outline: none;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
-}
-
-#contact-form .btn {
-    background-color: var(--button-bg);
-    color: white;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#contact-form .btn:hover {
-    background-color: #0056b3;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-    #contact-form input,
-    #contact-form textarea {
-        padding: 12px;
-    }
-}
-
-
-#unit-toggle {
+  }
+  
+  #unit-toggle {
     background-color: white;
     color: var(--button-bg);
     padding: 10px 15px;
@@ -429,25 +65,369 @@ footer {
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
-}
-
-#unit-toggle:hover {
+  }
+  
+  #unit-toggle:hover {
     background-color: #f0f0f0;
-}
-
-
-
-#air-quality {
+  }
+  
+  #weather-container,
+  #forecast {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--card-bg);
+    display: inline-block;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  #forecast-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px;
+  }
+  
+  .forecast-item {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 120px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .forecast-item p {
+    margin: 5px 0;
+  }
+  
+  /* Navigering */
+  nav {
+    background: var(--button-bg);
+    padding: 15px 0;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+  }
+  
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Hero-avsnitt */
+  #hero {
+    border: #f0f0f0 solid 1px;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  #hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  #hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  /* Nyheter */
+  #news {
+    text-align: center;
+    padding: 50px 20px;
+    background: var(--bg-color);
+  }
+  
+  #news h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    max-width: 1100px;
+    margin: auto;
+  }
+  
+  .news-item {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .news-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .news-item iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+  }
+  
+  .news-item p {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: var(--text-color);
+  }
+  
+  /* Städer */
+  #top-cities {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--bg-color);
+  }
+  
+  #top-cities h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .cities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 1100px;
+    margin: auto;
+  }
+  
+  .city-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .city-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .city-card .temp {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .city-card .desc {
+    font-size: 0.9em;
+    color: var(--text-color);
+  }
+  
+  /* Radar */
+  #radar {
+    width: 60%;
+    height: 450px;
+    align-content: center;
+  }
+  
+  /* Kontaktformulär */
+  #contact {
+    background: var(--bg-color);
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  #contact h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  #contact p {
+    margin-bottom: 30px;
+    color: var(--text-color);
+    font-size: 1em;
+  }
+  
+  #contact-form {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  #contact-form input,
+  #contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: 0.3s;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }
+  
+  #contact-form input:focus,
+  #contact-form textarea:focus {
+    border-color: var(--button-bg);
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+  }
+  
+  #contact-form .btn {
+    background-color: var(--button-bg);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #contact-form .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Footer */
+  footer {
+    background: var(--button-bg);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: auto;
+    text-align: left;
+  }
+  
+  .footer-container h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+  
+  .footer-container p,
+  .footer-container ul {
+    font-size: 0.9em;
+    color: #ddd;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links ul li {
+    margin: 5px 0;
+  }
+  
+  .footer-links ul li a {
+    text-decoration: none;
+    color: #ddd;
+    transition: 0.3s;
+  }
+  
+  .footer-links ul li a:hover {
+    color: #fff;
+  }
+  
+  .footer-api p a,
+  .footer-social a {
+    color: #ffffff;
+  }
+  
+  .footer-api p a:visited,
+  .footer-social a:visited {
+    color: #0673aaab !important;
+  }  
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-icons a img {
+    width: 30px;
+    transition: 0.3s;
+  }
+  
+  .social-icons a img:hover {
+    transform: scale(1.1);
+  }
+  
+  .footer-copy {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #ddd;
+  }
+  
+  /* Responsiv layout */
+  @media (max-width: 768px) {
+    .news-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .cities-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .footer-container {
+      grid-template-columns: repeat(2, 1fr);
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    #contact-form input,
+    #contact-form textarea {
+      padding: 12px;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .news-grid,
+    .cities-grid,
+    .footer-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Luftkvalitetskort */
+  #air-quality {
     text-align: center;
     padding: 40px 20px;
     background: var(--card-bg);
-}
-
-.aqi-card {
+  }
+  
+  .aqi-card {
     display: inline-block;
     padding: 20px;
     border-radius: 10px;
     background: var(--bg-color);
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
